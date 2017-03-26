@@ -1,0 +1,6 @@
+ua\home\web\controllers\ErrorController.class
+ua\home\models\User.class
+ua\home\web\controllers\UserController.class
+ua\home\web\controllers\WebController.class
+ua\home\web\Application.class
+ua\home\web\config\WebMvcConfiguration.class
