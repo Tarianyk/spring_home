@@ -1,7 +1,9 @@
 package ua.home.web.controllers;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import ua.home.exception.ServerException;
 
 @ControllerAdvice
 public class ErrorController {
@@ -12,10 +14,13 @@ public class ErrorController {
         return "error404";
     }
 
-    @ExceptionHandler(value = Exception.class)
+    @ExceptionHandler(value = ServerException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleAllException(Exception e) {
-        return "error500";
+    public String handleAllException(ServerException e) {
+        ModelMap model = new ModelMap();
+        model.addAttribute("error", e.getMessage());
+
+        return "redirect:/error500";
     }
 
 }
