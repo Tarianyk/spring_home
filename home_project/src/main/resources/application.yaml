@@ -1,0 +1,17 @@
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    ROOT: INFO
+    ua.home: DEBUG
+
+---
+spring:
+    profiles: dev, release
+logging:
+  file: logs/log.log
+  pattern:
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    ROOT: DEBUG
+    ua.home: DEBUG

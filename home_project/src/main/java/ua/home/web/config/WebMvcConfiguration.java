@@ -1,5 +1,6 @@
 package ua.home.web.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +14,10 @@ import java.io.File;
 
 @Configuration
 @EnableWebMvc
+@Slf4j
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
-    public static final String DIRECTORY = "E:\\images\\";
+    private static final String DIRECTORY = "E:\\images\\";
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -36,9 +38,9 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         File file = new File(DIRECTORY);
         if (!file.exists()) {
             if (file.mkdir()) {
-                System.out.println("Directory is created!");
+                log.info("Directory is created!");
             } else {
-                System.out.println("Failed to create directory!");
+                log.warn("Failed to create directory!");
             }
         }
     }

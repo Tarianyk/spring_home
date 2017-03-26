@@ -14,23 +14,27 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/image")
+@RequestMapping("image")
 public class ImageController {
 
     private static final String CONTENT_TYPE = "image/";
 
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public ResponseEntity uploadImageToServer(@RequestParam("fileUpload") MultipartFile multipartFile) {
+        File file = null;
         if (multipartFile.getContentType().startsWith(CONTENT_TYPE)) {
             String origname = multipartFile.getOriginalFilename();
             String extension = origname.substring(origname.lastIndexOf('.'), origname.length());
 
             try {
-                multipartFile.transferTo(new File(UUID.randomUUID().toString() + extension));
+                file = new File(UUID.randomUUID().toString() + extension);
+                multipartFile.transferTo(file);
             } catch (IOException e) {
                 throw new ServerException("Error was invoked during upload image to server.");
             }
+        } else {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity(file.getAbsolutePath(), HttpStatus.CREATED);
     }
 }

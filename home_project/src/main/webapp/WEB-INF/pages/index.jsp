@@ -11,14 +11,23 @@
 </head>
 <body class="security-app">
 
+<form action="/image/upload" method="post" enctype="multipart/form-data">
+    <div class="lc-block">
+        <div>
+            <input type="file" name="fileUpload" size="50"/>
+        </div>
+        <input type="submit" value="UPLOAD IMAGE">
+    </div>
+</form>
 <form action="/user/add" method="post">
     <div class="lc-block">
-        <%--<div>--%>
-            <%--<input type="file" name="fileUpload" size="50" />--%>
-        <%--</div>--%>
         <div>
             <input type="text" class="style-4" name="username"
                    placeholder="User Name"/>
+        </div>
+        <div>
+            <input type="text" class="style-4" name="email"
+                   placeholder="User Email"/>
         </div>
         <div>
             <input type="password" class="style-4" name="password"
