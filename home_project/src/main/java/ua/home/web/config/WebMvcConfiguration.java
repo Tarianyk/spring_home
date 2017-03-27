@@ -1,9 +1,12 @@
 package ua.home.web.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -15,6 +18,9 @@ import java.io.File;
 @Configuration
 @EnableWebMvc
 @Slf4j
+@ComponentScan({"ua.home"})
+@EntityScan("ua.home.domain")
+@EnableJpaRepositories("ua.home.repository")
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
     private static final String DIRECTORY = "E:\\images\\";

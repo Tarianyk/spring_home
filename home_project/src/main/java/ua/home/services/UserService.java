@@ -1,7 +1,9 @@
 package ua.home.services;
 
-import ua.home.domen.User;
+import ua.home.domain.User;
 
 public interface UserService {
-    void addUser(User user);
+    User addUser(User user);
+
+    User getUser(String id);
 }

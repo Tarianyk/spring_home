@@ -2,8 +2,10 @@ package ua.home.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.home.domen.User;
+import ua.home.domain.User;
 import ua.home.repository.UserRepository;
+
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -12,7 +14,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public void addUser(User user) {
-        System.err.println(user);
+    public User addUser(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User getUser(String id) {
+        return userRepository.findOne(UUID.fromString(id));
     }
 }

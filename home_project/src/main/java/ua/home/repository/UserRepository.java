@@ -1,7 +1,7 @@
 package ua.home.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import ua.home.domen.User;
+import ua.home.domain.User;
 
 import java.util.UUID;
 

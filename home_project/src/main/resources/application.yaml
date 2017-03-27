@@ -1,22 +1,17 @@
-logging:
-  pattern:
-    console: "%d %-5level %logger : %msg%n"
-  level:
-    ROOT: INFO
-    ua.home: DEBUG
+spring:
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://localhost:3306/hibernate
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
 
 ---
-spring:
-    profiles: dev, release
-logging:
-  file: logs/log.log
+
+  logging:
+    file: logs/log.log
   pattern:
     file: "%d %-5level [%thread] %logger : %msg%n"
   level:
     ROOT: DEBUG
     ua.home: DEBUG
-
-spring.datasource:
-  url: jdbc:mysql://localhost:3306/spring
-  username: root
-  password: root

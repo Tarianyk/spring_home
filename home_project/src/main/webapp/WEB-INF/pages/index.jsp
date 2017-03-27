@@ -37,5 +37,15 @@
     </div>
 </form>
 
+<form action="/user/get" method="get">
+    <div class="lc-block">
+        <div>
+            <input type="text" class="style-4" name="id" value="id"
+                   placeholder="User Name"/>
+        </div>
+        <input type="submit" value="SUBMIT">
+    </div>
+</form>
+
 </body>
 </html>
