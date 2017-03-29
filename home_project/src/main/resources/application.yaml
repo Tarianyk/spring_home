@@ -1,7 +1,7 @@
 spring:
   datasource:
     platform: mysql
-    url: jdbc:mysql://localhost:3306/hibernate
+    url: jdbc:mysql://localhost:3306/spring
     username: root
     password: root
     driverClassName: com.mysql.jdbc.Driver

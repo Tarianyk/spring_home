@@ -20,6 +20,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String id) {
-        return userRepository.findOne(UUID.fromString(id));
+        return userRepository.findOne(id);
     }
 }

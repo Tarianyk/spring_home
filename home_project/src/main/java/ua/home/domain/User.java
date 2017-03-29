@@ -1,9 +1,9 @@
 package ua.home.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -11,13 +11,19 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private String id;
     @Column(name = "email")
     private String email;
     @Column(name = "username")
     private String username;
-    @Column(name = "pass")
+    @Column(name = "password")
     private String password;
+    @Column(name = "image")
+    //TODO: change default value
+    private String image = "default";
+    @Column(name = "status")
+    private String status;
 
 }

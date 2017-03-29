@@ -17,4 +17,6 @@ public class UserDTO {
     @NotEmpty(message = "Please enter your email.")
     @Email
     private String email;
+    @NotEmpty(message = "Please enter status.")
+    private String status;
 }
